@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeSensei</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#fff6e4",
+                        "primary-container": "#a855f7",
+                        "on-secondary": "#00363a",
+                        "surface-tint": "#00dbe7",
+                        "secondary": "#95d1d6",
+                        "tertiary-fixed": "#ffe173",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-container": "#87c2c7",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-highest": "#353534",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "secondary-fixed-dim": "#95d1d6",
+                        "secondary-fixed": "#b1edf2",
+                        "on-primary-fixed-variant": "#004f54",
+                        "primary-fixed": "#74f5ff",
+                        "on-error": "#690005",
+                        "surface-bright": "#3a3939",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "on-tertiary-container": "#725e00",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-secondary-fixed-variant": "#064f53",
+                        "error-container": "#93000a",
+                        "primary": "#e1fdff",
+                        "on-primary": "#00363a",
+                        "secondary-container": "#0b5156",
+                        "on-primary-container": "#006a71",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary": "#3b2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed": "#002022",
+                        "outline-variant": "#3a494b",
+                        "outline": "#849495",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#002022",
+                        "surface-container": "#201f1f",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#00696f",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "tertiary-container": "#fed83a"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+        .glass-card {
+            background: rgba(53, 53, 52, 0.4);
+            backdrop-filter: blur(24px);
+        }
+        .glass-panel {
+            background: rgba(28, 27, 27, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+        @keyframes card-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-card-bounce {
+            animation: card-bounce 1s ease-in-out infinite;
+        }
+        .code-grid {
+            background-image: radial-gradient(circle at 2px 2px, rgba(168, 85, 247, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        /* Ripple Animation */
+        @keyframes ripple-anim {
+            to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+        .animate-ripple {
+            animation: ripple-anim 0.6s linear;
+        }
+
+        /* Nav Sweep Animation */
+        .nav-glow-sweep {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .nav-glow-sweep::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        .nav-glow-sweep:hover::before {
+            left: 100%;
+        }
+
+        /* Glow Pulse Animation */
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(168, 85, 247, 0.8), 0 0 60px rgba(168, 85, 247, 0.4); }
+            100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+        }
+        .pulse-glow {
+            animation: glow-pulse 2s infinite ease-in-out;
+        }
+
+        /* Page Transitions */
+        @keyframes flip-out {
+            from { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+            to { transform: perspective(1200px) rotateY(90deg); opacity: 0; }
+        }
+        .animate-flip-out {
+            animation: flip-out 0.2s ease-in forwards;
+        }
+
+        @keyframes flip-in {
+            from { transform: perspective(1200px) rotateY(-90deg); opacity: 0; }
+            to { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+        }
+        .animate-flip-in {
+            animation: flip-in 0.2s ease-out forwards;
+        }
+
+        @keyframes purple-flash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; background-color: rgba(168, 85, 247, 0.8); }
+        }
+        .animate-purple-flash {
+            animation: purple-flash 0.1s ease-in-out forwards;
+        }
+
+        @keyframes initial-load {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-initial-load {
+            animation: initial-load 0.6s ease-out forwards;
+        }
+
+        /* Glitch Animation for Title */
+        @keyframes text-glitch {
+            0%, 96% { transform: translate(0); text-shadow: none; opacity: 1; }
+            97% { transform: translate(-3px, 1px) skewX(-10deg); text-shadow: 2px 0 #a855f7, -2px 0 white; opacity: 0.8; }
+            98% { transform: translate(3px, -2px) skewX(10deg); text-shadow: -2px 0 #a855f7, 2px 0 white; opacity: 0.9; }
+            99% { transform: translate(-1px, 2px) skewX(-5deg); text-shadow: 2px 0 #a855f7, -2px 0 white; opacity: 0.8; }
+            100% { transform: translate(0); text-shadow: none; opacity: 1; }
+        }
+        .animate-text-glitch {
+            animation: text-glitch 4s infinite linear;
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DHEl7GJH.js"></script>
+  </head>
+  <body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+    <div id="root"></div>
+  </body>
+</html>
