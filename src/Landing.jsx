@@ -69,6 +69,16 @@ export default function Landing({ setPage }) {
             </RippleButton>
           </div>
 
+          <p style={{
+            textAlign: 'center',
+            color: 'rgba(168, 85, 247, 0.5)',
+            fontSize: '0.75rem',
+            letterSpacing: '0.05em',
+            marginTop: '16px'
+          }}>
+            📱 For the best experience, open this as a desktop site on mobile
+          </p>
+
           {/* Terminal Glimpse */}
           <div className="mt-24 w-full max-w-5xl glass-panel rounded-xl overflow-hidden border border-outline-variant/30 shadow-2xl">
             <div className="flex items-center gap-2 px-4 py-3 bg-surface-container-low border-b border-outline-variant/20">

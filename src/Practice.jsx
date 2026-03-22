@@ -23,13 +23,13 @@ export default function Practice({ setPage }) {
   React.useEffect(() => {
     let isMounted = true;
     setQuestionText('Loading question...');
-    fetch(`http://localhost:8000/question/demo123/${language}`)
+    fetch(`https://codesensei-backend-production.up.railway.app/question/demo123/${language}`)
       .then(res => res.json())
       .then(data => {
         if (isMounted) setQuestionText(data.question || data.text || JSON.stringify(data));
       })
       .catch(err => {
-        if (isMounted) setQuestionText('Failed to load question. Please ensure the backend API is running at localhost:8000.');
+        if (isMounted) setQuestionText('Failed to load question. Please ensure the backend API is running at https://codesensei-backend-production.up.railway.app');
       });
     return () => { isMounted = false; };
   }, [language]);
@@ -37,7 +37,7 @@ export default function Practice({ setPage }) {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:8000/submit', {
+      const response = await fetch('https://codesensei-backend-production.up.railway.app/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -58,7 +58,7 @@ export default function Practice({ setPage }) {
     } catch (error) {
       setMessages(prev => [...prev, {
         sender: "SENSEI",
-        text: "Error connecting to mentor API. Ensure localhost:8000 is listening for POST /submit.",
+        text: "Error connecting to mentor API. Ensure https://codesensei-backend-production.up.railway.app is listening for POST /submit.",
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
     } finally {
